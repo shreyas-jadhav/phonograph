@@ -1,12 +1,15 @@
 import getContext from './getContext';
 
+const noWindow = typeof window === 'undefined';
 let inited: boolean;
 
-window.addEventListener('touchend', init, false);
+if (!noWindow) {
+	window.addEventListener('touchend', init, false);
+}
 
 // https://paulbakaus.com/tutorials/html5/web-audio-on-ios/
 export default function init() {
-	if (inited) return;
+	if (inited || noWindow) return;
 
 	const context: AudioContext = getContext();
 

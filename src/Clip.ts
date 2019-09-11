@@ -53,7 +53,7 @@ export default class Clip {
 		this.url = url;
 		this.loop = loop || false;
 
-		this.loader = new (window.fetch ? FetchLoader : XhrLoader)(url);
+		this.loader = new (fetch ? FetchLoader : XhrLoader)(url);
 
 		this._volume = volume || 1;
 		this._gain = this.context.createGain();
